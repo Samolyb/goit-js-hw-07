@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task 3</title>
+  <link rel="stylesheet" href="./css/common.css" />
+  <style>
+    .title {
+      width: 360px;
+      height: 40px;
+      gap: 0px;
+      border-radius: 4px;
+      border: 1px solid #808080;
+      opacity: 0px;
+    }
+
+    .header {
+      font-family: "Montserrat" sans-serif;
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 32px;
+      letter-spacing: 0.04em;
+      text-align: left;
+    }
+  </style>
+</head>
+
+<body>
+  <p><a href="./index.html">Go back</a></p>
+
+  <input class="title" type="text" id="name-input" placeholder="Please enter your name" />
+  <h1 class="header">Hello, <span id="name-output">Anonymous</span>!</h1>
+
+  <script>
+    const nameInput = document.getElementById('name-input');
+    const nameOutput = document.getElementById('name-output');
+
+    nameInput.addEventListener('input', () => {
+      const trimmedValue = nameInput.value.trim();
+      if (trimmedValue === '') {
+        nameOutput.textContent = 'Anonymous';
+      } else {
+        nameOutput.textContent = trimmedValue;
+      }
+    });
+  </script>
+</body>
+
+</html>

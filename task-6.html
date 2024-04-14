@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task 6</title>
+  <link rel="stylesheet" href="./css/common.css" />
+  <style>
+    .number {
+      width: Hug (150px)px;
+      height: Hug (40px)px;
+      padding: 8px 16px 8px 16px;
+      gap: 10px;
+      border-radius: 8px;
+      border: 1px solid #808080;
+      opacity: 0px;
+
+
+    }
+
+    .btn {
+      width: Fixed (120px)px;
+      height: Hug (40px)px;
+      padding: 8px 16px 8px 16px;
+      gap: 10px;
+      border-radius: 8px;
+      opacity: 0px;
+      background-color: #4E75FF;
+      color: white;
+      border: none;
+    }
+
+    .btn:hover {
+      background-color: #6C8CFF
+    }
+
+    .btn-1 {
+      width: Fixed (120px)px;
+      height: Hug (40px)px;
+      padding: 8px 16px 8px 16px;
+      gap: 10px;
+      border-radius: 8px;
+      opacity: 0px;
+      background-color: #FF4E4E;
+      color: white;
+      border: none;
+    }
+
+    .btn-1:hover {
+      background-color: #FF7070;
+    }
+  </style>
+</head>
+
+<body>
+  <p><a href="./index.html">Go back</a></p>
+
+  <div id="controls">
+    <input class="number" type="number" min="1" max="100" step="1" />
+    <button class="btn" type="button" data-action="create">Create</button>
+    <button class="btn-1" type="button" data-action="destroy">Destroy</button>
+  </div>
+
+  <div id="boxes"></div>
+
+  <script>
+    function getRandomHexColor() {
+      return `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0')}`;
+    }
+
+    const controls = document.querySelector('#controls');
+    const boxesContainer = document.querySelector('#boxes');
+
+    controls.addEventListener('click', handleButtonClick);
+
+    function handleButtonClick(event) {
+      if (event.target.nodeName !== 'BUTTON') {
+        return;
+      }
+
+      const action = event.target.dataset.action;
+
+      if (action === 'create') {
+        createBoxes();
+      } else if (action === 'destroy') {
+        destroyBoxes();
+      }
+    }
+
+    function createBoxes() {
+      const input = document.querySelector('input[type="number"]');
+      const amount = Number(input.value);
+
+      if (amount < 1 || amount > 100) {
+        return;
+      }
+
+      const boxes = [];
+
+      for (let i = 0; i < amount; i++) {
+        const size = 30 + i * 10;
+        const box = document.createElement('div');
+        box.style.width = `${size}px`;
+        box.style.height = `${size}px`;
+        box.style.backgroundColor = getRandomHexColor();
+        boxes.push(box);
+      }
+
+      boxesContainer.innerHTML = '';
+      boxesContainer.append(...boxes);
+      input.value = '';
+    }
+
+    function destroyBoxes() {
+      boxesContainer.innerHTML = '';
+    }
+  </script>
+</body>
+
+</html>

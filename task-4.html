@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task 4</title>
+  <link rel="stylesheet" href="./css/common.css" />
+  <style>
+    body {
+      font-family: "Montserrat", sans-serif;
+    }
+
+    .login-form {
+      max-width: 300px;
+      margin: 0 auto;
+
+    }
+
+    .login-form label {
+      display: block;
+      margin-bottom: 10px;
+
+    }
+
+    .login-form input[type="email"],
+    .login-form input[type="password"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #808080;
+      border-radius: 4px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+      background-color: #FFFFFF;
+
+    }
+
+    .login-form input:hover {
+      border: 1px solid #000000
+    }
+
+    .login-form button {
+      width: 86px;
+      height: 40px;
+      padding: 8px 16px 8px 16px;
+      gap: 10px;
+      border-radius: 8px;
+      opacity: 0px;
+      background-color: #4E75FF;
+      color: white;
+      border: none;
+
+    }
+
+    .login-form button:hover {
+      background-color: #6C8CFF
+    }
+  </style>
+</head>
+
+<body>
+  <p><a href="./index.html">Go back</a></p>
+
+  <form class="login-form">
+    <label>
+      Email
+      <input type="email" name="email" placeholder="E-mail" />
+
+    </label>
+    <label>
+      Password
+      <input type="password" name="password" placeholder="password" />
+    </label>
+    <button type="submit">Log in</button>
+  </form>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const form = document.querySelector('.login-form');
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const emailInput = form.elements.email;
+        const passwordInput = form.elements.password;
+
+        const emailValue = emailInput.value.trim();
+        const passwordValue = passwordInput.value.trim();
+
+        if (emailValue === '' || passwordValue === '') {
+          alert('All form fields must be filled in');
+          return;
+        }
+
+        const formData = {
+          email: emailValue,
+          password: passwordValue
+        };
+
+        console.log(formData);
+
+        form.reset();
+      });
+    });
+  </script>
+</body>
+
+</html>

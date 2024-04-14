@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task 5</title>
+  <link rel="stylesheet" href="./css/common.css" />
+  <style>
+    .change-color {
+      width: Hug (148px)px;
+      height: Hug (40px)px;
+      padding: 8px 16px 8px 16px;
+      gap: 10px;
+      border-radius: 8px;
+      opacity: 0px;
+      background-color: #4E75FF;
+      color: white;
+      border: none;
+    }
+
+    .change-color:hover {
+      background-color: #6C8CFF
+    }
+
+    .title {
+      font-family: "Montserrat" sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+      letter-spacing: 0.04em;
+      text-align: left;
+    }
+  </style>
+</head>
+
+<body>
+  <p><a href="./index.html">Go back</a></p>
+
+  <div class="widget">
+    <p class="title">Background color: <span class="color">-</span></p>
+    <button type="button" class="change-color">Change color</button>
+  </div>
+
+  <script>
+    function getRandomHexColor() {
+      return `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0')}`;
+    }
+
+    const body = document.body;
+    const colorSpan = document.querySelector('.color');
+    const changeColorButton = document.querySelector('.change-color');
+
+    changeColorButton.addEventListener('click', () => {
+      const randomColor = getRandomHexColor();
+      body.style.backgroundColor = randomColor;
+      colorSpan.textContent = randomColor;
+    });
+  </script>
+
+</body>
+
+</html>
